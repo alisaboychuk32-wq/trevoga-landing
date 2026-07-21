@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тревога под контролем</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #3D4A40;
+    --bg-soft: #47564B;
+    --sage: #808A4E;
+    --sage-dim: #626B3B;
+    --ochre: #D4A574;
+    --ochre-hover: #E0B588;
+    --text: #F2EFE9;
+    --text-dim: #B9C3C2;
+    --card: #445041;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  header {
+    padding: 72px 0 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .breathe {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sage) 0%, transparent 72%);
+    position: relative;
+  }
+
+  .breathe::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--sage);
+    animation: breathe 11s ease-in-out infinite;
+  }
+
+  .breathe-label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  @keyframes breathe {
+    0%   { transform: scale(0.55); opacity: 0.5; }
+    36%  { transform: scale(1.15); opacity: 1; }
+    64%  { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(0.55); opacity: 0.5; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .breathe::before { animation: none; transform: scale(1); }
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 5.5vw, 44px);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    max-width: 520px;
+    margin: 0 auto 20px;
+  }
+
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(143,169,152,0.3), transparent);
+  }
+
+  .pain {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .cards {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(143,169,152,0.18);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .card .icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .card .title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .card .desc {
+    color: var(--text-dim);
+    font-size: 14.5px;
+  }
+
+  .changes {
+    background: var(--bg-soft);
+    border-radius: 18px;
+    padding: 36px 30px;
+    margin-top: 8px;
+  }
+
+  .changes h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .change-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(143,169,152,0.15);
+  }
+  .change-item:first-of-type { border-top: none; }
+
+  .change-item .mark {
+    color: var(--sage);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .change-item .txt {
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .for-whom {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 15px;
+    max-width: 420px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  .offer {
+    text-align: center;
+    padding: 48px 0 64px;
+  }
+
+  .price {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .price-note {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  button.cta, a.cta {
+    background: var(--ochre);
+    color: #2A2C18;
+    border: none;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 18px 44px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  button.cta:hover, a.cta:hover {
+    background: var(--ochre-hover);
+    transform: translateY(-1px);
+  }
+
+  button.cta:focus-visible, a.cta:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 3px;
+  }
+
+  .trust {
+    color: var(--text-dim);
+    font-size: 13.5px;
+    margin-top: 20px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 0 48px;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid rgba(143,169,152,0.12);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="breathe"><span class="breathe-label">вдох · выдох</span></div>
+    <h1>Тревога под контролем: разбираешься за 14 дней, а не годами в терапии</h1>
+    <p class="subtitle">Воркбук + карточки-подсказки + трекер привычек — собрала всё, что реально помогает справляться с тревогой день за днём</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <section>
+    <p class="pain">Тревога накрывает не по расписанию — на работе, ночью, в очереди. Читаешь советы в интернете, но они не складываются в систему. А записаться к психологу — то дорого, то страшно, то просто нет сил искать специалиста.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что входит</div>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">📘</div>
+        <div>
+          <div class="title">Воркбук «Тревога под контролем»</div>
+          <div class="desc">Рабочая тетрадь с упражнениями на каждый день</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🃏</div>
+        <div>
+          <div class="title">Карточки-подсказки</div>
+          <div class="desc">Что делать именно в моменте тревоги, без раздумий</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <div>
+          <div class="title">Трекер привычек</div>
+          <div class="desc">Отслеживаешь прогресс, видишь, что реально работает</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="changes">
+      <h2>Что изменится за 14 дней</h2>
+      <div class="change-item">
+        <div class="mark">—</div>
+        <div class="txt">Появится 3-4 рабочих способа быстро снизить тревогу в моменте</div>
+      </div>
+      <div class="change-item">
+        <div class="mark">—</div>
+        <div class="txt">Начнёшь замечать триггеры до того, как накроет, а не после</div>
+      </div>
+      <div class="change-item">
+        <div class="mark">—</div>
+        <div class="txt">Появится трекер-привычка: раз в день 2 минуты — и видно, что реально работает, а что нет</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="for-whom">Для тех, кто хочет разобраться с тревогой самостоятельно, пошагово, без записи к специалисту прямо сейчас</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="offer">
+    <div class="price">990 ₽</div>
+    <div class="price-note">за весь комплект — воркбук, карточки и трекер</div>
+
+    <a href="https://t.me/trevogapodkontrolem_bot?start=trevoga" target="_blank" rel="noopener" class="cta" style="display:inline-block; text-decoration:none;">Получить комплект →</a>
+    <p class="trust" style="margin-top:12px;">Откроется чат с ботом в Telegram — команда /trevoga всё покажет</p>
+
+    <p class="trust">Собрала всё на основе проверенных техник самопомощи — без воды и общих фраз «просто дыши»</p>
+  </section>
+
+  <footer>
+    После оплаты материалы отправляются в течение 24 часов
+  </footer>
+
+</div>
+</body>
+</html>
