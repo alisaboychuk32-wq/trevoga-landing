@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тревога под контролем — твои материалы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #3D4A40;
+    --sage: #808A4E;
+    --ochre: #D4A574;
+    --ochre-hover: #E0B588;
+    --text: #F2EFE9;
+    --text-dim: #C7CFC5;
+    --card: #445041;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+
+  .check {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(26px, 5vw, 34px);
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 16px;
+    text-align: center;
+    max-width: 420px;
+    margin: 0 auto 48px;
+  }
+
+  .files {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .file-card {
+    background: var(--card);
+    border: 1px solid rgba(212,165,116,0.18);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .file-card:hover {
+    border-color: var(--ochre);
+    transform: translateY(-1px);
+  }
+
+  .file-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .file-info { flex: 1; }
+
+  .file-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  .file-desc {
+    color: var(--text-dim);
+    font-size: 13.5px;
+  }
+
+  .download-arrow {
+    color: var(--ochre);
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .note {
+    background: rgba(212,165,116,0.1);
+    border: 1px solid rgba(212,165,116,0.25);
+    border-radius: 14px;
+    padding: 20px 22px;
+    font-size: 14px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .bot-link {
+    text-align: center;
+  }
+
+  .bot-link a {
+    color: var(--ochre);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-top: 48px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="check">🌿</div>
+  <h1>Спасибо! Твои материалы готовы</h1>
+  <p class="subtitle">Скачивай всё по ссылкам ниже — файлы останутся у тебя навсегда, можно сохранить на телефон или компьютер</p>
+
+  <div class="files">
+    <a href="workbook.pdf" download class="file-card">
+      <div class="file-icon">📘</div>
+      <div class="file-info">
+        <div class="file-title">Воркбук «Тревога под контролем»</div>
+        <div class="file-desc">Рабочая тетрадь на 14 дней, PDF</div>
+      </div>
+      <div class="download-arrow">↓</div>
+    </a>
+
+    <a href="cards.pdf" download class="file-card">
+      <div class="file-icon">🃏</div>
+      <div class="file-info">
+        <div class="file-title">Карточки-подсказки</div>
+        <div class="file-desc">6 карманных карточек, PDF</div>
+      </div>
+      <div class="download-arrow">↓</div>
+    </a>
+
+    <a href="tracker.xlsx" download class="file-card">
+      <div class="file-icon">📊</div>
+      <div class="file-info">
+        <div class="file-title">Трекер привычек</div>
+        <div class="file-desc">Таблица на 14 дней, Excel</div>
+      </div>
+      <div class="download-arrow">↓</div>
+    </a>
+  </div>
+
+  <div class="note">
+    Если ссылки не открываются или что-то не скачалось — просто напиши в бот, пришлю материалы вручную
+  </div>
+
+  <div class="bot-link">
+    Есть вопросы по использованию? Пиши <a href="https://t.me/trevogapodkontrolem_bot" target="_blank">@trevogapodkontrolem_bot</a>
+  </div>
+
+  <footer>С заботой о твоём спокойствии 🌿</footer>
+
+</div>
+</body>
+</html>
